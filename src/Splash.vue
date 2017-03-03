@@ -3,15 +3,15 @@ div
     div#preload
     div.intro-header
         md-layout.intro-text(md-align="center")
-            h1 Random Flower
-            h3 Deck Analysis Powered by Artificial Intelligence
+            div.md-display-4(style="color: white") Random Flower
+            div.md-display-2(style="color: white") Deck Analysis Powered by Artificial Intelligence
 
 
 </template>
 
 <script>
 export default {
-  name: 'app',
+  name: 'Splash',
   data () {
     return {
       msg: 'Welcome to Your Vue.js App'
@@ -37,13 +37,5 @@ export default {
     top: 20%
     display: block
     text-align: center
-
-.intro-text > h1
-    font-size: 80px
-    font-weight: 300
-    letter-spacing: 6px
-
-.intro-text > h3
-    font-size: 20px
-    font-weight: 300
+    text-shadow: 4px 4px #0f0f0f
 </style>
