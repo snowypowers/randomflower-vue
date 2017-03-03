@@ -1,10 +1,13 @@
 <template lang="pug">
 div#app {{message}}
-  div#navi
-    router-link(to="/foo") Go foo! 
-    br
-    router-link(to="/bar") Go bar!
-  router-view
+    div#splash
+      router-view.splash(name="splash")
+    div#navi
+      router-view.navi(name='navi')
+    div#content
+      router-view.content(name="content")
+    div#footer
+      router-view.footer(name="footer")
 </template>
 
 <script>
@@ -28,4 +31,25 @@ export default {
   margin-top: 60px;
   border-style: solid;
 }
+
+#splash {
+  border-style: solid;
+  border-color: yellow;
+}
+
+#navi {
+  border-style: solid;
+  border-color: red;
+}
+
+#content {
+  border-style: solid;
+  border-color: green;
+}
+
+#footer {
+  border-style: solid;
+  border-color: blue;
+}
+
 </style>
