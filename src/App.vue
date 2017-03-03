@@ -1,6 +1,10 @@
 <template lang="pug">
 div#app {{message}}
-  p Hi!
+  div#navi
+    router-link(to="/foo") Go foo! 
+    br
+    router-link(to="/bar") Go bar!
+  router-view
 </template>
 
 <script>
