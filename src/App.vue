@@ -21,35 +21,30 @@ export default {
 }
 </script>
 
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-  border-style: solid;
-}
+<style lang="stylus">
+#app
+  font-family: 'Avenir', Helvetica, Arial, sans-serif
+  -webkit-font-smoothing: antialiased
+  -moz-osx-font-smoothing: grayscale
+  text-align: center
+  color: #2c3e50
+  margin-top: 60px
+  border-style: solid
 
-#splash {
-  border-style: solid;
-  border-color: yellow;
-}
+#splash
+  border-style: solid
+  border-color: yellow
 
-#navi {
-  border-style: solid;
-  border-color: red;
-}
+#navi
+  border-style: solid
+  border-color: red
 
-#content {
-  border-style: solid;
-  border-color: green;
-}
+#content
+  border-style: solid
+  border-color: green
 
-#footer {
-  border-style: solid;
-  border-color: blue;
-}
+#footer
+  border-style: solid
+  border-color: blue
 
 </style>

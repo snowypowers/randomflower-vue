@@ -1,9 +1,11 @@
 import Vue from 'vue'
+import VueMaterial from 'vue-material'
 import VueRouter from 'vue-router'
 import App from './App.vue'
 import Landing from './Landing.vue'
 
 Vue.use(VueRouter)
+Vue.use(VueMaterial)
 
 const Foo = { template: '<div>foo</div>' }
 const Bar = { template: '<div>bar</div>' }
