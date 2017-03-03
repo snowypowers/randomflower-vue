@@ -1,13 +1,9 @@
 <template lang="pug">
-div#app {{message}}
-    div#splash
-      router-view.splash(name="splash")
-    div#navi
-      router-view.navi(name='navi')
-    div#content
-      router-view.content(name="content")
-    div#footer
-      router-view.footer(name="footer")
+div#app
+    router-view#splash(name="splash")
+    router-view#navi(name='navi')
+    router-view#content(name="content")
+    router-view#footer(name="footer")
 </template>
 
 <script>
