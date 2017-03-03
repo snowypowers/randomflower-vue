@@ -24,22 +24,23 @@ export default {
   -moz-osx-font-smoothing: grayscale
   text-align: center
   color: #2c3e50
-  border-style: solid
 
-#splash
-  border-style: solid
-  border-color: yellow
+.text-center
+  text-align: center
 
-#navi
-  border-style: solid
-  border-color: red
+.flex-center
+  align-items: center
+  justify-content: center
 
-#content
-  border-style: solid
-  border-color: green
+.section-a
+  background-color: #f8f8f8
+  padding: 90px 0
 
-#footer
-  border-style: solid
-  border-color: blue
+.section-b
+  background-color: #ffffff
+  padding: 90px 0
 
+@media (min-width: 600px)
+  .container
+    margin: 5wh 0
 </style>
