@@ -1,10 +1,12 @@
 <template lang="pug">
-md-toolbar.md-dense#navi
-    md-button.md-icon-button
-        md-icon menu
-    h2.md-title(style="flex: 1") RF
-    md-button.md-raised Add
-    md-button.md-raised Remove
+div.container
+    md-toolbar#navi
+        md-avatar.md-primary
+            md-icon favorite border
+        h2.md-title.md-hide-medium-and-up RF
+        h2.md-title.md-hide-small Random Flower
+        md-button.md-hide-medium-and-up
+            md-icon menu
 </template>
 
 <script>
@@ -17,12 +19,15 @@ export default {
 }
 </script>
 
-<style lang="stylus">
+<style lang="stylus" scoped>
 #navi
     position: relative
     width: 100%
     z-index: 999
-    color: #34495e
+
+h2
+    flex: 1
+    text-align: left
 
 .toTop
     position: fixed
