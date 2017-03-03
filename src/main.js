@@ -5,14 +5,43 @@ import Landing from './Landing.vue'
 
 Vue.use(VueRouter)
 
-const Base = { template: '<div> Lets Start! </div>' }
 const Foo = { template: '<div>foo</div>' }
 const Bar = { template: '<div>bar</div>' }
+const defaultSplash = { template: '<div> SPLASH!</div>' }
+const defaultNavi = {
+  template: `<div>NavBar
+  <router-link to="/foo"> Foo </router-link>
+  <router-link to="/bar"> Bar </router-link>
+</div>`}
+const defaultContent = { template: '<div> Content </div>' }
+const defaultFooter = { template: '<div> This is a footer </div>' }
 
 const routes = [
-  {path: '/', component: Base},
-  {path: '/foo', component: Foo},
-  {path: '/bar', component: Bar}
+  {
+    path: '/', components: {
+      splash: defaultSplash,
+      navi: defaultNavi,
+      content: defaultContent,
+      footer: defaultFooter
+    }
+
+  },
+  {
+    path: '/foo', components: {
+      splash: defaultSplash,
+      navi: defaultNavi,
+      content: Foo,
+      footer: defaultFooter
+    }
+  },
+  {
+    path: '/bar', components: {
+      splash: defaultSplash,
+      navi: defaultNavi,
+      content: Bar,
+      footer: defaultFooter
+    }
+  }
 ]
 
 const router = new VueRouter({
@@ -25,4 +54,5 @@ const app = new Vue({
   render: h => h(App),
   template: '<App/>',
   components: { App }
+
 })
