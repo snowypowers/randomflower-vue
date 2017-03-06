@@ -32,7 +32,7 @@ export default {
 
 .intro-text
     padding: 0 15px
-    position: absolute
+    position: relative
     width: 100%
     top: 20%
     display: block

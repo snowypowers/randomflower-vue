@@ -25,6 +25,31 @@ export default {
   text-align: center
   color: #2c3e50
 
+h1
+  font-size: 80px
+  line-height:80px
+
+h2
+  font-size: 64px
+  line-height:64px
+
+
+h3
+  font-size: 48px
+  line-height:48px
+
+h4
+  font-size: 24px
+  line-height:24px
+
+p
+  font-size: 16px
+
+.lead 
+  margin: 10px 0
+  line-height: 1.5
+  font-weight:300
+
 .text-center
   text-align: center
 
@@ -35,12 +60,23 @@ export default {
 .section-a
   background-color: #f8f8f8
   padding: 90px 0
+  min-height: 300px
 
 .section-b
   background-color: #ffffff
   padding: 90px 0
+  min-height: 300px
+
+.section-c
+  background-color: #34495e
+  padding: 90px 0
+  min-height: 300px
+  color: white
+
+img 
+  margin: auto
 
 @media (min-width: 600px)
   .container
-    margin: 5wh 0
+    margin: 0 5%
 </style>

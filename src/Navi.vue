@@ -1,5 +1,5 @@
 <template lang="pug">
-div.container
+div
     md-toolbar#navi
         md-avatar.md-primary
             md-icon favorite border
