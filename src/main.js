@@ -10,7 +10,7 @@ Vue.use(VueRouter)
 Vue.use(VueMaterial)
 
 Vue.material.registerTheme('default', {
-  primary: { color: 'grey', hue: '200' },
+  primary: { color: 'indigo', hue: '800' },
   accent: { color: 'blue-grey', hue: '500' },
   warn: { color: 'red', hue: '700' },
   background: { color: 'white'}
@@ -32,14 +32,13 @@ const routes = [
     path: '/', components: {
       splash: Splash,
       navi: Navi,
-      content: defaultContent,
+      content: Landing,
       footer: defaultFooter
     }
 
   },
   {
     path: '/foo', components: {
-      splash: defaultSplash,
       navi: defaultNavi,
       content: Foo,
       footer: defaultFooter
@@ -47,7 +46,6 @@ const routes = [
   },
   {
     path: '/bar', components: {
-      splash: defaultSplash,
       navi: defaultNavi,
       content: Bar,
       footer: defaultFooter
