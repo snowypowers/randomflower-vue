@@ -55,14 +55,16 @@ div
     div.container
       md-layout.md-column.flex-center(md-flex="50")
         h2 Try it now!
-        router-link.md-raised.md-primary(tag="md-button" to="/play") Get Started
+        router-link(to="/play")
+          md-button.md-raised.md-primary(tag="md-button") Get Started
 
   div.text-center.section-c#signup
     div.container
       md-layout.md-column.flex-center(md-flex="50")
         h2 Interested?
         p.lead Sign up for updates!
-        router-link.md-raised.md-primary(tag="md-button" to="/sign") Sign Up!
+        router-link(to="/sign")
+          md-button.md-raised.md-primary(tag="md-button" ) Sign Up!
 
   div.section-a#contact
     div.container
