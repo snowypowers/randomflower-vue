@@ -1,15 +1,22 @@
 var path = require('path')
 var webpack = require('webpack')
+var ExtractTextPlugin = require('extract-text-webpack-plugin')
 
 module.exports = {
   entry: './src/main.js',
   output: {
     path: path.resolve(__dirname, './dist'),
-    publicPath: '/dist/',
+    publicPath: '/',
     filename: 'build.js'
   },
   module: {
     rules: [
+      {
+        test: /\.css$/,
+        use: ExtractTextPlugin.extract({
+            use: "css-loader"
+        })
+      },
       {
         test: /\.vue$/,
         loader: 'vue-loader',
@@ -50,7 +57,10 @@ module.exports = {
   performance: {
     hints: false
   },
-  devtool: '#eval-source-map'
+  devtool: '#eval-source-map',
+  plugins: [
+    new ExtractTextPlugin('styles.css')
+  ]
 }
 
 if (process.env.NODE_ENV === 'production') {

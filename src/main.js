@@ -5,6 +5,7 @@ import App from './App.vue'
 import Landing from './Landing.vue'
 import Navi from './Navi.vue'
 import Splash from './Splash.vue'
+import css from '../node_modules/vue-material/dist/vue-material.css'
 
 Vue.use(VueRouter)
 Vue.use(VueMaterial)

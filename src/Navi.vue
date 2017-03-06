@@ -50,6 +50,4 @@ h2
     flex: 1
     text-align: left
 
-
-
 </style>
