@@ -13,10 +13,10 @@ Vue.use(Vuex)
 Vue.use(VueMaterial)
 
 Vue.material.registerTheme('default', {
-  primary: { color: 'indigo', hue: '800' },
-  accent: { color: 'blue-grey', hue: '500' },
+  //primary: { color: 'indigo', hue: '800' },
+  accent: 'white',
   warn: { color: 'red', hue: '700' },
-  background: { color: 'white'}
+  //background: { color: 'grey'}
 })
 
 const router = new VueRouter({
