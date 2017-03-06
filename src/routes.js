@@ -2,6 +2,8 @@ import Landing from './Landing.vue'
 import Navi from './Navi.vue'
 import Splash from './Splash.vue'
 import Footer from './Footer.vue'
+import NotFound from './NotFound.vue'
+import Play from './Play.vue'
 
 const Foo = { template: '<div>foo</div>' }
 const Bar = { template: '<div>bar</div>' }
@@ -22,26 +24,26 @@ const routes = [
       content: Landing,
       footer: Footer
     }
-
   },
   {
     path: '/foo', components: {
-      navi: defaultNavi,
+      splash: NotFound,
+      navi: Navi,
       content: Foo,
       footer: Footer
     }
   },
   {
-    path: '/bar', components: {
-      navi: defaultNavi,
-      content: Bar,
+    path: '/play', components: {
+      splash: NotFound,
+      navi: Navi,
+      content: Play,
       footer: Footer
     }
   },
   {
-    path: '*', components: {
-      splash: Splash,
-      footer: Footer
+    path: '*', component: {
+      splash: NotFound
     }
   }
 ]

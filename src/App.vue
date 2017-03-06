@@ -1,9 +1,9 @@
 <template lang="pug">
 div#app
-    router-view#splash(name="splash")
-    router-view#navi(name='navi')
-    router-view#content(name="content")
-    router-view#footer(name="footer")
+  router-view#splash(name="splash")
+  router-view#navi(name='navi')
+  router-view#content(name="content")
+  router-view#footer(name="footer")
 </template>
 
 <script>
@@ -45,7 +45,7 @@ h4
 p
   font-size: 16px
 
-.lead 
+.lead
   margin: 10px 0
   line-height: 1.5
   font-weight:300
@@ -77,11 +77,22 @@ p
   padding: 10px 0 90px 0
   background-color: #34495e
   color: white
-  
-img 
+
+img
   margin: auto
 
-@media (min-width: 600px)
-  .container
+.container
+  @media (min-width: 600px)
     margin: 0 5%
+
+.container-fluid
+  width:100%
+  @media (min-width: 600px)
+    margin: 0 5%
+
+.no-pad
+  padding: 0 0
+
+.no-margin
+  margin: 0 0
 </style>
