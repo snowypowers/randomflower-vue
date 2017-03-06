@@ -73,6 +73,11 @@ p
   min-height: 300px
   color: white
 
+.section-f
+  padding: 10px 0 90px 0
+  background-color: #34495e
+  color: white
+  
 img 
   margin: auto
 

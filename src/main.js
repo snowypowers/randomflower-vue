@@ -5,6 +5,7 @@ import App from './App.vue'
 import Landing from './Landing.vue'
 import Navi from './Navi.vue'
 import Splash from './Splash.vue'
+import Footer from './Footer.vue'
 import css from '../node_modules/vue-material/dist/vue-material.css'
 
 Vue.use(VueRouter)
@@ -34,7 +35,7 @@ const routes = [
       splash: Splash,
       navi: Navi,
       content: Landing,
-      footer: defaultFooter
+      footer: Footer
     }
 
   },
@@ -42,14 +43,20 @@ const routes = [
     path: '/foo', components: {
       navi: defaultNavi,
       content: Foo,
-      footer: defaultFooter
+      footer: Footer
     }
   },
   {
     path: '/bar', components: {
       navi: defaultNavi,
       content: Bar,
-      footer: defaultFooter
+      footer: Footer
+    }
+  },
+  {
+    path: '*', components: {
+      splash: Splash,
+      footer: Footer
     }
   }
 ]
