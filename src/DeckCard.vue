@@ -1,5 +1,5 @@
 <template lang="pug">
-md-card.deckcard
+md-card.deckcard(md-with-hover=true)
   md-card-header
     md-avatar
       img(v-bind:src="classImg" alt="class")
