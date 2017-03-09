@@ -27,18 +27,23 @@ div
           md-layout
             p.lead We will process your request ASAP and get back to you through email. Once done, you will receive an email detailing the win rates and the turn profile of each deck.
 
-  div.section-a#deckbuilder
+  div.section-a.fill-screen#deckbuilder(style="display: flex; flex-direction: column;")
     h1 Deck Builder
     h4 Build the decks you desire to use and the opponents it will face
     md-layout
       md-layout(md-flex="33" md-flex-xsmall="100")
         DeckField#deckfield
       md-layout(md-flex="33" md-flex-xsmall="100")
+        DeckEditor#hseditor
       md-layout(md-flex="33" md-flex-xsmall="100")
+  div.section-c.fill-screen
+
+
 </template>
 
 <script>
 import DeckField from './DeckField.vue'
+import DeckEditor from './DeckEditor.vue'
 export default {
   name: 'app',
   data () {
@@ -47,7 +52,8 @@ export default {
     }
   },
   components: {
-      DeckField
+      DeckField,
+      DeckEditor
   }
 }
 </script>

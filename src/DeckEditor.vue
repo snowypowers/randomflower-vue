@@ -1,17 +1,69 @@
 <template lang="pug">
-div deck editor
+MonacoEditor(height="400" v-bind:options="options" v-bind:changeThrottle="500" srcPath="dist" @mounted="loadHS")
 
 </template>
 
 <script>
-import Deckcard from './DeckCard.vue'
+import MonacoEditor from 'vue-monaco-editor/src/Monaco.vue'
+import languages from './js/languages.js'
+
 export default {
-  name: 'DeckEditor',
+  name: 'app',
   data () {
     return {
-
+      initialText: 'Welcome to Your Vue.js App',
+      options: {
+        theme: 'hstheme',
+        value: "initial_deck_text",
+        language: 'hs-0',
+        fontSize: 18,
+        lineNumbers: null,
+        wordWrap: true,
+        scrollbar: {
+            horizontal: 'hidden'
+        }
+      }
     }
+  },
+    methods: {
+      loadHS(editor) {
+        Object.keys(languages).forEach((val) => {
+          window.monaco.languages.register({ id: val });
+          window.monaco.languages.setMonarchTokensProvider(val, languages[val]['token']);
+          window.monaco.languages.registerCompletionItemProvider(val, languages[val]['completion']);
+        })
+        window.monaco.editor.defineTheme('hstheme', {
+          base: 'vs',
+          inherit: true,
+          rules: [
+            { token: 'classtype', foreground: '000000', fontStyle: 'bold' },
+            { token: 'deckname', foreground: '000000', fontStyle: 'bold' },
+            { token: 'priestcards', foreground: 'C7C19F' },
+            { token: 'warlockcards', foreground: '7624AD' },
+            { token: 'magecards', foreground: '0092AB' },
+            { token: 'huntercards', foreground: '016E01' },
+            { token: 'paladincards', foreground: 'AA8F00' },
+            { token: 'druidcards', foreground: '703606' },
+            { token: 'warriorcards', foreground: '8E1002' },
+            { token: 'shamancards', foreground: '021885' },
+            { token: 'roguecards', foreground: '5C5D58' },
+            { token: 'neutralcards', foreground: '5e5249' },
+            { token: 'one', foreground: 'FFA500' },
+            { token: 'two', foreground: '008800' },
+            { token: 'comments', foreground: '888888', fontStyle: 'italic' },
+            { token: 'error', foreground: 'FF0000', fontStyle: 'bold' }
+          ]
+        })
+        editor.updateOptions({
+          theme: 'hstheme'
+        })
+        window.monaco.editor.setModelLanguage(editor.model, 'hs-0')
+      }
+  },
+  components: {
+    MonacoEditor
   }
+
 }
 </script>
 
