@@ -19,8 +19,29 @@ Vue.material.registerTheme('default', {
   //background: { color: 'grey'}
 })
 
+const scrollBehavior = (to, from, savedPosition) => {
+    console.log([to, from, savedPosition])
+    if (savedPosition) {
+      // savedPosition is only available for popstate navigations.
+      return savedPosition
+    } else {
+      const position = {}
+      // new navigation.
+      // scroll to anchor by returning the selector
+      if (to.hash) {
+        position.selector = to.hash
+      } else {
+        position.x = 0
+        position.y = 0
+      }
+      return position
+    }
+  }
+
 const router = new VueRouter({
-  routes
+  mode: 'history',
+  routes,
+  scrollBehavior
 })
 
 const store = new Vuex.Store({
