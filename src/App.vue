@@ -22,7 +22,6 @@ export default {
   font-family: Roboto, Helvetica, Arial, sans-serif
   -webkit-font-smoothing: antialiased
   -moz-osx-font-smoothing: grayscale
-  text-align: center
   color: #2c3e50
 
 h1
@@ -89,6 +88,9 @@ img
   width:100%
   @media (min-width: 600px)
     margin: 0 5%
+
+.fill-screen
+  min-height: 100vh
 
 .no-pad
   padding: 0 0
