@@ -35,7 +35,6 @@ const routes = [
   },
   {
     path: '/play', components: {
-      splash: NotFound,
       navi: Navi,
       content: Play,
       footer: Footer
