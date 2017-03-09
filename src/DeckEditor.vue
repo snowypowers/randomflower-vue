@@ -1,17 +1,17 @@
 <template lang="pug">
-MonacoEditor(height="400" v-bind:options="options" v-bind:changeThrottle="500" srcPath="dist" @mounted="loadHS")
+MonacoEditor(height="400" v-bind:options="options" v-bind:changeThrottle="500" srcPath="dist" @mounted="loadHS" @codeChange="onType")
 
 </template>
 
 <script>
 import MonacoEditor from 'vue-monaco-editor/src/Monaco.vue'
 import languages from './js/languages.js'
+import {col, heroClasses} from './data/en.js'
 
 export default {
   name: 'app',
   data () {
     return {
-      initialText: 'Welcome to Your Vue.js App',
       options: {
         theme: 'hstheme',
         value: "initial_deck_text",
@@ -22,7 +22,8 @@ export default {
         scrollbar: {
             horizontal: 'hidden'
         }
-      }
+      },
+      currentLang: 'neutral'
     }
   },
     methods: {
@@ -58,6 +59,15 @@ export default {
           theme: 'hstheme'
         })
         window.monaco.editor.setModelLanguage(editor.model, 'hs-0')
+      },
+      onType(editor) {
+        var text = editor.getValue()
+        var heroClass = text.split(col, 1)[0].trim().toLowerCase()
+        if (Object.keys(heroClasses).includes(heroClass) && this.currentLang != heroClass) {
+          this.currentLang = heroClass
+          window.monaco.editor.setModelLanguage(editor.model, 'hs-' + heroClasses[heroClass].toString())
+          console.log("Change Language to " + heroClass)
+        }
       }
   },
   components: {
