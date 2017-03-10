@@ -80,8 +80,8 @@ export default {
         if (Object.keys(heroClasses).includes(heroClass) && this.currentLang != heroClass) {
           this.currentLang = heroClass
           window.monaco.editor.setModelLanguage(editor.model, 'hs-' + heroClasses[heroClass].toString())
-          console.log("Change Language to " + heroClass)
         }
+        this.$store.dispatch('saveDeck', text)
       },
       handleResize() {
         if (this.editor) this.editor.layout()
@@ -95,7 +95,6 @@ export default {
   },
   beforeDestroy: function () {
     window.removeEventListener('resize', this.handleResize)
-    this.selectWatcher()
   }
 
 }

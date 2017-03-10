@@ -2,6 +2,7 @@
 export const ADD_DECK = 'ADD_DECK'
 export const REMOVE_DECK = 'REMOVE_DECK'
 export const SELECT_DECK = 'SELECT_DECK'
+export const SAVE_DECK = 'SAVE_DECK'
 export const POPULATE_DECKS = 'POPULATE_DECKS'
 export const SAVE_TO_LOCAL = 'SAVE_TO_LOCAL'
 export const CLEAR_DECKS = 'CLEAR_DECKS'

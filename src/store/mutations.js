@@ -1,4 +1,4 @@
-import { ADD_DECK, REMOVE_DECK, POPULATE_DECKS, SAVE_TO_LOCAL, CLEAR_DECKS, SELECT_DECK } from './mutation-types.js'
+import { ADD_DECK, REMOVE_DECK, SAVE_DECK, POPULATE_DECKS, SAVE_TO_LOCAL, CLEAR_DECKS, SELECT_DECK } from './mutation-types.js'
 
 Storage.prototype.setObject = function (key, value) {
   this.setItem(key, JSON.stringify(value));
@@ -19,6 +19,12 @@ const mutations = {
     }
     state.decks.splice(deckNum, 1)
   },
+  [SELECT_DECK](state, deckNum) {
+    state.selectedDeck = deckNum
+  },
+  [SAVE_DECK](state, list) {
+    state.decks[state.selectedDeck] = list
+  },
   [POPULATE_DECKS](state) {
     let decks = localStorage.getObject('RF.decklists')
     if (decks) {
@@ -30,9 +36,6 @@ const mutations = {
   },
   [CLEAR_DECKS](state) {
     state.decks = []
-  },
-  [SELECT_DECK](state, deckNum) {
-    state.selectedDeck = deckNum
   }
 }
 

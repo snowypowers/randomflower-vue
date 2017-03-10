@@ -18,17 +18,25 @@ const actions = {
       list = heroClass + ": " + deckName
     }
     commit(types.ADD_DECK, destructureDeck(list, data[state.locale]))
+    commit(types.SAVE_TO_LOCAL)
   },
   removeDeck: ({ commit }, deckNum) => {
     commit(types.REMOVE_DECK, deckNum)
+  },
+  saveDeck: ({ state, commit }, list) => {
+    let deck = destructureDeck(list, data[state.locale])
+    if (deck != null) {
+      commit(types.SAVE_DECK, deck)
+      commit(types.SAVE_TO_LOCAL)
+    }
   },
   saveDecks: ({ commit }) => {
     commit(types.SAVE_TO_LOCAL)
   },
   restoreDefaults: ({ state, commit }) => {
-      commit(types.CLEAR_DECKS)
+    commit(types.CLEAR_DECKS)
     let prebuilts = data[state.locale]['prebuilts']
-    let defaultDecks = prebuilts.map((x)=> destructureDeck(x, data[state.locale]))
+    let defaultDecks = prebuilts.map((x) => destructureDeck(x, data[state.locale]))
     for (let deck of defaultDecks) {
       commit(types.ADD_DECK, deck)
     }
