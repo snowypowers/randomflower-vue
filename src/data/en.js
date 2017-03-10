@@ -15,6 +15,19 @@ const heroClasses = {
     'neutral': 12
 }
 
+const heroNumLookup = {
+    '8': 'shaman',
+    '9': 'warlock',
+    '7': 'rogue',
+    '4': 'mage',
+    '5': 'paladin',
+    '2': 'druid',
+    '10': 'warrior',
+    '6': 'priest',
+    '3': 'hunter',
+    '12': 'neutral'
+}
+
 const prebuilts = [
     ["Warrior: Aggro Dragon Warrior",
         "2 Small-Time Buccaneer",
@@ -393,4 +406,4 @@ const i18n_d = {
     "Site not supported. Please input a supported link": "Site not supported. Please input a supported link"
 }
 
-export {locale, col, heroClasses, prebuilts, cardnames, legendaries, heroAdjs, supportedImports, i18n_d}
+export {locale, col, heroClasses, heroNumLookup, prebuilts, cardnames, legendaries, heroAdjs, supportedImports, i18n_d}
