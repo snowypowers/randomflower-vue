@@ -2,33 +2,64 @@
 div.container-fluid.no-margin
   md-toolbar.md-accent#deckhead
     h4.md-title(style="flex: 1; text-align: left;") Decks
-    md-button.md-icon-button
+    md-button.md-icon-button#addDeck(v-on:click.native="addNewDeck" title="Add New Deck")
       md-icon add_circle
-    md-button.md-icon-button
-      md-icon remove_circle
-  DeckCard(v-for="(deck, index) in decks" v-bind:key="index" v-bind:deckName="deck.deckName" v-bind:deckClass="deck.deckClass" v-bind:deckNum="index")
+    md-button.md-icon-button#saveDecks(@click.native="saveDecks" title="Save Current Decks")
+      md-icon save
+    md-button.md-icon-button#restoreDecks(@click.native="confirmRestore" title="Restore Default Decks")
+      md-icon restore
+          md-dialog(md-open-from="#restoreDecks" md-close-to="#restoreDecks" ref="restoreDialog")
+            md-dialog-title Restore Default Decks?
+            md-dialog-content Erase all decks and restore defaults?
+            md-dialog-actions
+              md-button.md-primary(@click.native="closeDialog('restoreDialog')") Cancel
+              md-button.md-primary(@click.native="restoreDefaults") Confirm
+  div#deckcards
+    DeckCard(v-for="(deck, index) in decks" v-bind:key="index" v-bind:deckName="deck.deckName" v-bind:deckClass="deck.deckClass" v-bind:deckNum="index")
 
 </template>
 
 <script>
 import DeckCard from './DeckCard.vue'
+
 export default {
   name: 'DeckField',
-  data () {
-    return {
-      decks: [
-        {deckName: "Deck 1", deckClass: "Paladin", deckList: "long long list"},
-        {deckName: "Deck 2", deckClass: "Mage", deckList: "long long list"},
-        {deckName: "Deck 3 this is a super duper long dekc name", deckClass: "Druid", deckList: "long long list"},
-      ]
+  computed: {
+    decks() {
+      return this.$store.state.decks
     }
   },
   components: {
     DeckCard
+  },
+  methods :{
+    addNewDeck: function() {
+      this.$store.dispatch('newDeck', null)
+    },
+    saveDecks: function() {
+      this.$store.dispatch('saveDecks')
+    },
+    confirmRestore: function() {
+      this.$refs["restoreDialog"].open()
+    },
+    closeDialog: function(ref) {
+      this.$refs[ref].close()
+    },
+    restoreDefaults: function() {
+      this.$refs["restoreDialog"].close()
+      this.$store.dispatch('restoreDefaults')
+    }
+  },
+  beforeMount() {
+    this.$store.commit('POPULATE_DECKS')
   }
 }
 </script>
 
 <style lang="stylus" scoped>
 
+#deckcards
+  flex:1
+  overflow-y: scroll
+  overflow-x: hidden
 </style>

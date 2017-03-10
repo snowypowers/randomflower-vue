@@ -6,12 +6,13 @@ md-card.deckcard(md-with-hover=true)
     md-card-header-text.no-margin
       p.deckname.no-margin {{deckName}}
     md-card-actions
-      md-button.md-icon-button.remove-card
+      md-button.md-icon-button.remove-card(@click.native="removeDeck")
         md-icon clear
 
 </template>
 
 <script>
+import { heroNumLookup } from './data/en.js'
 export default {
   name: 'DeckCard',
   props: ['deckName', 'deckClass', 'deckNum'],
@@ -21,7 +22,12 @@ export default {
   },
   computed : {
     classImg: function() {
-      return '../static/icon/classes/' + this.deckClass.toLowerCase() + '.png'
+      return '../static/icon/classes/' + heroNumLookup[this.deckClass.toString()] + '.png'
+    }
+  },
+  methods: {
+    removeDeck: function() {
+      this.$store.dispatch('removeDeck', this.deckNum)
     }
   }
 }
