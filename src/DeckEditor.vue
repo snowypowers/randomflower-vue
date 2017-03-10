@@ -1,5 +1,5 @@
 <template lang="pug">
-MonacoEditor(v-bind:options="options" v-bind:changeThrottle="500" srcPath="dist" @mounted="loadHS" @codeChange="onType")
+MonacoEditor(ref="editor" v-bind:options="options" v-bind:changeThrottle="500" srcPath="dist" @mounted="loadHS" @codeChange="onType")
 
 </template>
 
@@ -25,6 +25,18 @@ export default {
       },
       editor: null,
       currentLang: 'neutral'
+    }
+  },
+  computed: {
+    selectedDeck: function() {
+      return this.$store.state.selectedDeck
+    }
+  },
+  watch: {
+    selectedDeck: function(newValue) {
+      if(this.editor) {
+        this.editor.setValue(this.$store.state.decks[newValue]['deckList'])
+      }
     }
   },
     methods: {
@@ -83,6 +95,7 @@ export default {
   },
   beforeDestroy: function () {
     window.removeEventListener('resize', this.handleResize)
+    this.selectWatcher()
   }
 
 }
