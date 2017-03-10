@@ -1,4 +1,4 @@
-import { ADD_DECK, REMOVE_DECK, POPULATE_DECKS, SAVE_TO_LOCAL, CLEAR_DECKS } from './mutation-types.js'
+import { ADD_DECK, REMOVE_DECK, POPULATE_DECKS, SAVE_TO_LOCAL, CLEAR_DECKS, SELECT_DECK } from './mutation-types.js'
 
 Storage.prototype.setObject = function (key, value) {
   this.setItem(key, JSON.stringify(value));
@@ -30,6 +30,9 @@ const mutations = {
   },
   [CLEAR_DECKS](state) {
     state.decks = []
+  },
+  [SELECT_DECK](state, deckNum) {
+    state.selectedDeck = deckNum
   }
 }
 

@@ -1,12 +1,12 @@
 <template lang="pug">
-md-card.deckcard(md-with-hover=true)
+md-card.deckcard.md-with-hover(@click.native="selectCard" v-bind:class="selectedCard")
   md-card-header
     md-avatar
       img(v-bind:src="classImg" alt="class")
     md-card-header-text.no-margin
       p.deckname.no-margin {{deckName}}
     md-card-actions
-      md-button.md-icon-button.remove-card(@click.native="removeDeck")
+      md-button.md-icon-button.remove-card(@click.native.stop="removeDeck")
         md-icon clear
 
 </template>
@@ -23,11 +23,18 @@ export default {
   computed : {
     classImg: function() {
       return '../static/icon/classes/' + heroNumLookup[this.deckClass.toString()] + '.png'
+    },
+    selectedCard: function() {
+      return {selected: this.$store.state.selectedDeck == this.deckNum}
     }
   },
   methods: {
     removeDeck: function() {
       this.$store.dispatch('removeDeck', this.deckNum)
+    },
+    selectCard: function() {
+      console.log("selected card " + this.deckNum.toString())
+      this.$store.commit('SELECT_DECK', this.deckNum)
     }
   }
 }
@@ -48,5 +55,8 @@ export default {
 
 .remove-card
   top: 7px
+
+.selected
+  border-left: 10px solid blue
 
 </style>
