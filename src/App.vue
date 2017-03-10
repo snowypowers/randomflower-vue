@@ -90,7 +90,7 @@ img
     margin: 0 5%
 
 .fill-screen
-  min-height: 100vh
+  height: 100vh
 
 .no-pad
   padding: 0 0

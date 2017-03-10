@@ -59,7 +59,7 @@ export default {
 <style lang="stylus" scoped>
 
 #deckcards
-  flex:1
+  max-height:576px
   overflow-y: scroll
   overflow-x: hidden
 </style>

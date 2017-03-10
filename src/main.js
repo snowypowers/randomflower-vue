@@ -17,10 +17,10 @@ Vue.use(Vuex)
 Vue.use(VueMaterial)
 
 Vue.material.registerTheme('default', {
-  //primary: { color: 'indigo', hue: '800' },
+  primary: { color: 'indigo', hue: '800' },
   accent: 'white',
   warn: { color: 'red', hue: '700' },
-  //background: { color: 'grey'}
+  background: 'white'
 })
 
 const scrollBehavior = (to, from, savedPosition) => {
