@@ -28,8 +28,9 @@ div
             p.lead We will process your request ASAP and get back to you through email. Once done, you will receive an email detailing the win rates and the turn profile of each deck.
 
   div.section-a.fill-screen#deckbuilder(style="display: flex; flex-direction: column;")
-    h1 Deck Builder
-    h4 Build the decks you desire to use and the opponents it will face
+    md-layout.text-center.md-column
+      h1.no-margin Deck Builder
+      h4 Build the decks you desire to use and the opponents it will face
     md-layout
       md-layout(md-flex="33" md-flex-xsmall="100")
         DeckField#deckfield
