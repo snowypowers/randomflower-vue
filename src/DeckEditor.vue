@@ -1,5 +1,5 @@
 <template lang="pug">
-MonacoEditor(height="400" v-bind:options="options" v-bind:changeThrottle="500" srcPath="dist" @mounted="loadHS" @codeChange="onType")
+MonacoEditor(v-bind:options="options" v-bind:changeThrottle="500" srcPath="dist" @mounted="loadHS" @codeChange="onType")
 
 </template>
 
@@ -23,11 +23,13 @@ export default {
             horizontal: 'hidden'
         }
       },
+      editor: null,
       currentLang: 'neutral'
     }
   },
     methods: {
       loadHS(editor) {
+        this.editor = editor
         Object.keys(languages).forEach((val) => {
           window.monaco.languages.register({ id: val });
           window.monaco.languages.setMonarchTokensProvider(val, languages[val]['token']);
@@ -68,10 +70,19 @@ export default {
           window.monaco.editor.setModelLanguage(editor.model, 'hs-' + heroClasses[heroClass].toString())
           console.log("Change Language to " + heroClass)
         }
+      },
+      handleResize() {
+        if (this.editor) this.editor.layout()
       }
   },
   components: {
     MonacoEditor
+  },
+  mounted: function () {
+    window.addEventListener('resize', this.handleResize)
+  },
+  beforeDestroy: function () {
+    window.removeEventListener('resize', this.handleResize)
   }
 
 }
