@@ -15,7 +15,7 @@ div.container-fluid.no-margin
               md-button.md-primary(@click.native="closeDialog('restoreDialog')") Cancel
               md-button.md-primary(@click.native="restoreDefaults") Confirm
   div#deckcards
-    DeckCard(v-for="(deck, index) in decks" v-bind:key="index" v-bind:deckName="deck.deckName" v-bind:deckClass="deck.deckClass" v-bind:deckNum="index")
+    DeckCard(v-for="(deck, index) in decks" v-bind:key="index" v-bind:deckName="deck.deckName" v-bind:deckClass="deck.deckClass" v-bind:deckNum="deck.id")
 
 </template>
 

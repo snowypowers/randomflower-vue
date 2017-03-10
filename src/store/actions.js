@@ -22,6 +22,7 @@ const actions = {
   },
   removeDeck: ({ commit }, deckNum) => {
     commit(types.REMOVE_DECK, deckNum)
+
   },
   saveDeck: ({ state, commit }, list) => {
     let deck = destructureDeck(list, data[state.locale])

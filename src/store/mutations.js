@@ -10,17 +10,25 @@ Storage.prototype.getObject = function (key) {
 
 const mutations = {
   [ADD_DECK](state, deck) {
-    state.decks.push(deck)
+    state.decks.push(Object.assign({}, deck, {'id': state.deckID}))
+    state.deckID += 1
   },
   [REMOVE_DECK](state, deckNum) {
-    if (state.decks.length == 0 && deckNum == 0) {
-      state.decks = []
-      return
+    for (let i=0;i<state.decks.length;i++) {
+      if (state.decks[i].id == deckNum) {
+        state.decks.splice(i, 1)
+        break
+      }
     }
-    state.decks.splice(deckNum, 1)
   },
   [SELECT_DECK](state, deckNum) {
     state.selectedDeck = deckNum
+    for (let i=0;i<state.decks.length;i++) {
+      if (state.decks[i].id == deckNum) {
+        state.selectedDeck = i
+        break
+      }
+    }
   },
   [SAVE_DECK](state, list) {
     state.decks[state.selectedDeck] = list
@@ -28,7 +36,12 @@ const mutations = {
   [POPULATE_DECKS](state) {
     let decks = localStorage.getObject('RF.decklists')
     if (decks) {
+      for (let deck of decks) {
+        deck.id = state.deckID
+        state.deckID += 1
+      }
       state.decks = decks
+
     }
   },
   [SAVE_TO_LOCAL](state) {
