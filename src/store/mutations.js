@@ -1,4 +1,4 @@
-import {ADD_DECKCARD, REMOVE_DECKCARD, POPULATE_DECKS, SAVE_TO_LOCAL} from './mutation-types.js'
+import { ADD_DECK, REMOVE_DECK, POPULATE_DECKS, SAVE_TO_LOCAL, CLEAR_DECKS } from './mutation-types.js'
 
 Storage.prototype.setObject = function (key, value) {
   this.setItem(key, JSON.stringify(value));
@@ -9,13 +9,14 @@ Storage.prototype.getObject = function (key) {
 }
 
 const mutations = {
-  [ADD_DECKCARD](state, list) {
-    if (!list) {
-      list = "Class: New Deck\n"
-    }
-    state.decks.push({ deckName: "New Deck", deckClass: "Neutral", deckList: list })
+  [ADD_DECK](state, deck) {
+    state.decks.push(deck)
   },
-  [REMOVE_DECKCARD](state, deckNum) {
+  [REMOVE_DECK](state, deckNum) {
+    if (state.decks.length == 0 && deckNum == 0) {
+      state.decks = []
+      return
+    }
     state.decks.splice(deckNum, 1)
   },
   [POPULATE_DECKS](state) {
@@ -26,6 +27,9 @@ const mutations = {
   },
   [SAVE_TO_LOCAL](state) {
     localStorage.setObject('RF.decklists', state.decks)
+  },
+  [CLEAR_DECKS](state) {
+    state.decks = []
   }
 }
 

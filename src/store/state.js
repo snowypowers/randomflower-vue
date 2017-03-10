@@ -1,11 +1,9 @@
 import { prebuilts } from '../data/en.js'
+import { destructureDeck } from '../helpers.js'
+import data from '../data/index.js'
 
 const state = {
-  decks: [
-    { deckName: "Aggro Dragon Warrior", deckClass: "Warrior", deckList: prebuilts[0] },
-    { deckName: "Aggro Shaman 0", deckClass: "Shaman", deckList: prebuilts[1] },
-    { deckName: "Pirate Warrior", deckClass: "Warrior", deckList: prebuilts[2] },
-  ],
+  decks: prebuilts.map((x)=> destructureDeck(x, data.en)),
   selectedDeck: 0,
   locale: 'en'
 }

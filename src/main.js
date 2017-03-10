@@ -8,6 +8,10 @@ import App from './App.vue'
 import routes from './routes.js'
 import css from '../node_modules/vue-material/dist/vue-material.css'
 
+import state from './store/state.js'
+import mutations from './store/mutations.js'
+import actions from './store/actions.js'
+
 Vue.use(VueRouter)
 Vue.use(Vuex)
 Vue.use(VueMaterial)
@@ -20,23 +24,23 @@ Vue.material.registerTheme('default', {
 })
 
 const scrollBehavior = (to, from, savedPosition) => {
-    console.log([to, from, savedPosition])
-    if (savedPosition) {
-      // savedPosition is only available for popstate navigations.
-      return savedPosition
+  console.log([to, from, savedPosition])
+  if (savedPosition) {
+    // savedPosition is only available for popstate navigations.
+    return savedPosition
+  } else {
+    const position = {}
+    // new navigation.
+    // scroll to anchor by returning the selector
+    if (to.hash) {
+      position.selector = to.hash
     } else {
-      const position = {}
-      // new navigation.
-      // scroll to anchor by returning the selector
-      if (to.hash) {
-        position.selector = to.hash
-      } else {
-        position.x = 0
-        position.y = 0
-      }
-      return position
+      position.x = 0
+      position.y = 0
     }
+    return position
   }
+}
 
 const router = new VueRouter({
   mode: 'history',
@@ -45,13 +49,9 @@ const router = new VueRouter({
 })
 
 const store = new Vuex.Store({
-  decks: [
-    "Deck 1",
-    "Deck 2",
-    "Deck 3",
-  ],
-  selected: 0,
-  locale: 'en'
+  state,
+  mutations,
+  actions
 })
 
 const app = new Vue({
