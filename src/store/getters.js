@@ -3,6 +3,10 @@ const getters = {
   decknames: state => {
     return state.decks.map(x => x.deckName)
   },
+  currentDeckList: state => {
+    if (state.selectedDeck == -1) return null
+    return state.decks.filter((d)=> d.id == state.selectedDeck)[0]
+  },
   matchupTable: state => {
     return state.matchups.map((m) => {
       let deck1 = state.decks.filter(d=> d.id == m.deck1)

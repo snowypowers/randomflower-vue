@@ -33,7 +33,6 @@ export default {
       this.$store.dispatch('removeDeck', this.deckNum)
     },
     selectCard: function() {
-      console.log("selected card " + this.deckNum.toString())
       this.$store.commit('SELECT_DECK', this.deckNum)
     }
   }

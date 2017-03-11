@@ -1,6 +1,6 @@
 import * as types from './mutation-types.js'
 import data from '../data/index.js'
-import { toTitleCase, destructureDeck } from '../helpers.js'
+import { toTitleCase, destructureDeck, keySort, basicSort, reverseSort } from '../helpers.js'
 
 const actions = {
   newDeck: ({ state, commit }, list) => {
@@ -47,7 +47,18 @@ const actions = {
     commit(types.SAVE_TO_LOCAL)
   },
   addMatchup: ({ commit }, matchup) => {
+    if (matchup.deck1 == null || matchup.deck2 == null || matchup.num < 0) {
+      //TODO ERROR
+      return
+    }
     commit(types.ADD_MATCHUP, matchup)
+  },
+  removeMatchup: ({ commit }, row) => {
+    commit(types.REMOVE_MATCHUP, row)
+  },
+  sortMatchups: ({ commit }, params) => {
+    let sortFunc = keySort(params.name, params.type == 'asc' ? basicSort : reverseSort)
+    commit(types.SORT_MATCHUP, sortFunc)
   }
 }
 

@@ -9,3 +9,19 @@ export function destructureDeck(deckList, locale) {
   deckClass = locale.heroClasses[deckClass.toLowerCase()]
   return {deckClass, deckName, deckList}
 }
+
+export function keySort(key, sortF) {
+  return function(a,b) {
+    return sortF(a[key], b[key])
+  }
+}
+
+export function basicSort(a,b) {
+  if (a == b) return 0
+  return a > b ? 1 : -1
+}
+
+export function reverseSort(a,b) {
+  if (a == b) return 0
+  return a < b ? 1 : -1
+}

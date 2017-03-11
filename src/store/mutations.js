@@ -67,11 +67,11 @@ const mutations = {
   [ADD_MATCHUP](state, matchup) {
     state.matchups.push(matchup)
   },
-  [REMOVE_MATCHUP](state, matchup) {
-
+  [REMOVE_MATCHUP](state, row) {
+    state.matchups.splice(row, 1)
   },
-  [SORT_MATCHUP](state) {
-
+  [SORT_MATCHUP](state, func) {
+    state.matchups.sort(func)
   },
   [CLEAR_MATCHUPS](state) {
     state.matchups = []
