@@ -20,9 +20,11 @@ const actions = {
     commit(types.ADD_DECK, destructureDeck(list, data[state.locale]))
     commit(types.SAVE_TO_LOCAL)
   },
-  removeDeck: ({ commit }, deckNum) => {
+  removeDeck: ({ state, commit }, deckNum) => {
     commit(types.REMOVE_DECK, deckNum)
-
+    if (state.selectedDeck == deckNum) {
+      commit(types.SELECT_DECK, -1)
+    }
   },
   saveDeck: ({ state, commit }, list) => {
     let deck = destructureDeck(list, data[state.locale])
@@ -36,12 +38,16 @@ const actions = {
   },
   restoreDefaults: ({ state, commit }) => {
     commit(types.CLEAR_DECKS)
+    commit(types.CLEAR_MATCHUPS)
     let prebuilts = data[state.locale]['prebuilts']
     let defaultDecks = prebuilts.map((x) => destructureDeck(x, data[state.locale]))
     for (let deck of defaultDecks) {
       commit(types.ADD_DECK, deck)
     }
     commit(types.SAVE_TO_LOCAL)
+  },
+  addMatchup: ({ commit }, matchup) => {
+    commit(types.ADD_MATCHUP, matchup)
   }
 }
 
