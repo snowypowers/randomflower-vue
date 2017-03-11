@@ -2,7 +2,7 @@
 div
   div.text-center.section-b#how
     div.container
-      h1 How this works
+      h1.no-margin How this works
       br
       md-layout(md-gutter="40")
         md-layout.md-column.flex-center(md-flex="33" md-flex-xsmall="100")
@@ -27,17 +27,23 @@ div
           md-layout
             p.lead We will process your request ASAP and get back to you through email. Once done, you will receive an email detailing the win rates and the turn profile of each deck.
 
-  div.section-a.fill-screen#deckbuilder
+  div.section-a.fill-screen
+    div.container#deckbuilder
+      div.text-center.md-column
+        h1.no-margin Deck Builder
+        h4 Build the decks you desire to use and the opponents it will face
+      md-layout
+        md-layout(md-flex="33" md-flex-xsmall="100")
+          DeckField#deckfield
+        md-layout(md-flex="33" md-flex-xsmall="100")
+          DeckEditor#hseditor
+        md-layout(md-flex="33" md-flex-xsmall="100")
+
+  div.container.section-b.fill-screen#matchups
     div.text-center.md-column
-      h1.no-margin Deck Builder
-      h4 Build the decks you desire to use and the opponents it will face
-    md-layout
-      md-layout(md-flex="33" md-flex-xsmall="100")
-        DeckField#deckfield
-      md-layout(md-flex="33" md-flex-xsmall="100")
-        DeckEditor#hseditor
-      md-layout(md-flex="33" md-flex-xsmall="100")
-  div.section-c.fill-screen
+      h1.no-margin Matchups
+      h4 Select your deck matchups, choose the number of matches to be simulated and click the red button to add them. There is a total limit of 1000 simulations.
+    Matchups
 
 
 </template>
@@ -45,6 +51,7 @@ div
 <script>
 import DeckField from './DeckField.vue'
 import DeckEditor from './DeckEditor.vue'
+import Matchups from './Matchups.vue'
 export default {
   name: 'app',
   data () {
@@ -54,7 +61,8 @@ export default {
   },
   components: {
       DeckField,
-      DeckEditor
+      DeckEditor,
+      Matchups
   }
 }
 </script>
@@ -64,5 +72,6 @@ export default {
 #deckbuilder
   display: flex
   flex-flow: column
+  height:100%
 
 </style>

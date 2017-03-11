@@ -9,6 +9,7 @@ import routes from './routes.js'
 import css from '../node_modules/vue-material/dist/vue-material.css'
 
 import state from './store/state.js'
+import getters from './store/getters.js'
 import mutations from './store/mutations.js'
 import actions from './store/actions.js'
 
@@ -50,6 +51,7 @@ const router = new VueRouter({
 
 const store = new Vuex.Store({
   state,
+  getters,
   mutations,
   actions
 })
