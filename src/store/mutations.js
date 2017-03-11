@@ -1,4 +1,5 @@
 import { ADD_DECK, REMOVE_DECK, SAVE_DECK, POPULATE_DECKS, SAVE_TO_LOCAL, CLEAR_DECKS, SELECT_DECK } from './mutation-types.js'
+import Vue from 'vue'
 
 Storage.prototype.setObject = function (key, value) {
   this.setItem(key, JSON.stringify(value));
@@ -23,15 +24,15 @@ const mutations = {
   },
   [SELECT_DECK](state, deckNum) {
     state.selectedDeck = deckNum
+  },
+  [SAVE_DECK](state, list) {
     for (let i=0;i<state.decks.length;i++) {
-      if (state.decks[i].id == deckNum) {
-        state.selectedDeck = i
+      if (state.decks[i].id == state.selectedDeck) {
+        let updatedVal = Object.assign({}, state.decks[i], list)
+        Vue.set(state.decks, i, updatedVal)
         break
       }
     }
-  },
-  [SAVE_DECK](state, list) {
-    state.decks[state.selectedDeck] = list
   },
   [POPULATE_DECKS](state) {
     let decks = localStorage.getObject('RF.decklists')
@@ -41,7 +42,6 @@ const mutations = {
         state.deckID += 1
       }
       state.decks = decks
-
     }
   },
   [SAVE_TO_LOCAL](state) {
@@ -49,6 +49,7 @@ const mutations = {
   },
   [CLEAR_DECKS](state) {
     state.decks = []
+    state.deckID = 1
   }
 }
 

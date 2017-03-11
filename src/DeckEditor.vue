@@ -35,7 +35,13 @@ export default {
   watch: {
     selectedDeck: function(newValue) {
       if(this.editor) {
-        this.editor.setValue(this.$store.state.decks[newValue]['deckList'])
+        if (newValue == -1) {
+          this.editor.setValue("// No Deck Selected")
+          return
+        } else {
+          let deck = this.$store.state.decks.filter((d)=> d.id == this.$store.state.selectedDeck)[0]
+          this.editor.setValue(deck.deckList)
+        }
       }
     }
   },
