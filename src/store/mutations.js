@@ -1,5 +1,18 @@
-import { ADD_DECK, REMOVE_DECK, SAVE_DECK, POPULATE_DECKS, SAVE_TO_LOCAL, CLEAR_DECKS, SELECT_DECK } from './mutation-types.js'
 import Vue from 'vue'
+import {
+  ADD_DECK,
+  REMOVE_DECK,
+  SAVE_DECK,
+  POPULATE_DECKS,
+  SAVE_TO_LOCAL,
+  CLEAR_DECKS,
+  SELECT_DECK,
+  ADD_MATCHUP,
+  REMOVE_MATCHUP,
+  SORT_MATCHUP,
+  CLEAR_MATCHUPS
+ } from './mutation-types.js'
+
 
 Storage.prototype.setObject = function (key, value) {
   this.setItem(key, JSON.stringify(value));
@@ -50,7 +63,20 @@ const mutations = {
   [CLEAR_DECKS](state) {
     state.decks = []
     state.deckID = 1
+  },
+  [ADD_MATCHUP](state, matchup) {
+    state.matchups.push(matchup)
+  },
+  [REMOVE_MATCHUP](state, matchup) {
+
+  },
+  [SORT_MATCHUP](state) {
+
+  },
+  [CLEAR_MATCHUPS](state) {
+    state.matchups = []
   }
+
 }
 
 export default mutations
