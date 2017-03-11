@@ -4,6 +4,13 @@ div#app
   router-view#navi(name='navi')
   router-view#content(name="content")
   router-view#footer(name="footer")
+  md-snackbar(md-position="top right" md-duration="2000" ref="infobar")
+    span {{ infoMsg }}
+    md-button(@click.native="$refs.infobar.close()") OK
+  md-snackbar(md-position="top right" md-duration="2000" ref="errorbar")
+    md-icon.md-warn error_outline
+    span {{ errorMsg }}
+    md-button(@click.native="$refs.errorbar.close()") OK
 </template>
 
 <script>
@@ -12,6 +19,22 @@ export default {
   data () {
     return {
 
+    }
+  },
+  computed: {
+    errorMsg() {
+      return this.$store.state.msg.error
+    },
+    infoMsg() {
+      return this.$store.state.msg.info
+    }
+  },
+  watch: {
+    errorMsg(newValue) {
+      if (newValue != "") this.$refs.errorbar.open()
+    },
+    infoMsg(newValue) {
+      if (newValue != "") this.$refs.infobar.open()
     }
   }
 }

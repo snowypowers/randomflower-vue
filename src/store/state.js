@@ -7,7 +7,11 @@ const state = {
   matchups: [],
   selectedDeck: -1,
   locale: 'en',
-  deckID: prebuilts.length
+  deckID: prebuilts.length,
+  msg: {
+    info: "",
+    error: ""
+  }
 }
 
 export default state

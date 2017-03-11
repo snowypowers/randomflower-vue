@@ -12,3 +12,7 @@ export const ADD_MATCHUP = 'ADD_MATCHUP'
 export const REMOVE_MATCHUP = 'REMOVE_MATCHUP'
 export const SORT_MATCHUP = 'SORT_MATCHUP'
 export const CLEAR_MATCHUPS = 'CLEAR_MATCHUPS'
+
+//MSG FUNCTIONALITY
+export const INFO_MSG = 'INFO_MSG'
+export const ERROR_MSG = 'ERROR_MSG'

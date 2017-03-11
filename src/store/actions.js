@@ -31,10 +31,12 @@ const actions = {
     if (deck != null) {
       commit(types.SAVE_DECK, deck)
       commit(types.SAVE_TO_LOCAL)
+
     }
   },
   saveDecks: ({ commit }) => {
     commit(types.SAVE_TO_LOCAL)
+    commit(types.INFO_MSG, "Decks saved")
   },
   restoreDefaults: ({ state, commit }) => {
     commit(types.CLEAR_DECKS)
@@ -45,10 +47,11 @@ const actions = {
       commit(types.ADD_DECK, deck)
     }
     commit(types.SAVE_TO_LOCAL)
+    commit(types.INFO_MSG, "Default Decks Restored")
   },
   addMatchup: ({ commit }, matchup) => {
     if (matchup.deck1 == null || matchup.deck2 == null || matchup.num < 0) {
-      //TODO ERROR
+      commit(types.ERROR_MSG, "Incomplete Matchup details")
       return
     }
     commit(types.ADD_MATCHUP, matchup)

@@ -10,7 +10,9 @@ import {
   ADD_MATCHUP,
   REMOVE_MATCHUP,
   SORT_MATCHUP,
-  CLEAR_MATCHUPS
+  CLEAR_MATCHUPS,
+  INFO_MSG,
+  ERROR_MSG
  } from './mutation-types.js'
 
 
@@ -75,8 +77,15 @@ const mutations = {
   },
   [CLEAR_MATCHUPS](state) {
     state.matchups = []
+  },
+  [INFO_MSG](state, msg) {
+    if (state.msg.info == msg) msg += " "
+    Vue.set(state.msg, 'info', msg)
+  },
+  [ERROR_MSG](state, msg) {
+    if (state.msg.error == msg) msg += " "
+    Vue.set(state.msg, 'error', msg)
   }
-
 }
 
 export default mutations
