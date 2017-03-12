@@ -5,11 +5,12 @@ const bodyParser = require('body-parser');
 const app = express();
 
 //Static folder for all assets
-app.use(express.static('dist'));
+app.use('/dist', express.static('dist'));
+app.use('/static', express.static('static'));
 //Set view engine
 //app.set('view engine', 'pug');
 
-app.get('/', function (req, res) {
+app.get('/*', function (req, res) {
     res.sendFile(path.join(__dirname + '/index.html'));
 });
 
