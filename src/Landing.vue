@@ -1,6 +1,6 @@
 <template lang="pug">
 div
-  div.text-center.section-b#product
+  div.text-center.section-b#about
     div.container
       h1 Build Decks. Test Quickly.
       br
@@ -38,7 +38,7 @@ div
             Our data driven analysis will surface all good combinations, creating visibility for hidden combinations.
         md-layout.md-column(md-flex="50" md-flex-xsmall="100")
           img(src="../static/manacurve.png" style="margin: auto")
-          
+
   div.text-center.section-b
     div.container
       md-layout(md-gutter="24")

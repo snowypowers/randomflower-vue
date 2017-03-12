@@ -11,9 +11,7 @@ div(v-bind:class="{stickTop: isSticky}")
       md-button(md-menu-trigger).md-hide-medium-and-up
         md-icon menu
       md-menu-content
-          md-menu-item Item 1
-          md-menu-item Item 2
-          md-menu-item Item 3
+          md-menu-item(v-for="(item, index) in navMenu" v-bind:key="index" @click.native="navTo(item)") {{ item }}
 </template>
 
 <script>
@@ -25,10 +23,15 @@ export default {
         isSticky: false
     }
   },
+  props: ['navMenu'],
   methods: {
       calculateSticky: function(e) {
           let currentY = window.scrollY
           this.isSticky = currentY > this.offsetY? true : false
+      },
+      navTo: function(id) {
+        let tag = id.toLowerCase().replace(/ /g,'')
+        this.$router.push({path: this.$route.fullPath, hash: tag})
       }
   },
   mounted() {

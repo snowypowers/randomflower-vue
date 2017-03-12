@@ -27,8 +27,8 @@ div
           md-layout
             p.lead We will process your request ASAP and get back to you through email. Once done, you will receive an email detailing the win rates and the turn profile of each deck.
 
-  div.section-a.fill-screen
-    div.container#deckbuilder
+  div.section-a.fill-screen#deckbuilder
+    div.container.fillandflex
       div.text-center.md-column
         h1.no-margin Deck Builder
         h4 Build the decks you desire to use and the opponents it will face
@@ -86,7 +86,7 @@ export default {
 
 <style lang="stylus" scoped>
 
-#deckbuilder
+.fillandflex
   display: flex
   flex-flow: column
   height:100%
