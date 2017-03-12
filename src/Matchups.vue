@@ -72,10 +72,10 @@ export default {
 
 .md-toolbar > .select-num
   width:auto
-  flex: 1
+  flex: 1 1 auto
 
 .md-toolbar > .md-button
-  flex: 1
+  flex: 1 1 auto
 
 .md-table .md-table-cell .md-button .md-icon
   width: auto

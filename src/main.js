@@ -25,7 +25,6 @@ Vue.material.registerTheme('default', {
 })
 
 const scrollBehavior = (to, from, savedPosition) => {
-  console.log([to, from, savedPosition])
   if (savedPosition) {
     // savedPosition is only available for popstate navigations.
     return savedPosition

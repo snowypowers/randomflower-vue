@@ -113,7 +113,9 @@ img
     margin: 0 5%
 
 .fill-screen
-  height: 100vh
+  min-height: 100vh
+  @media (min-width: 600px)
+    height: 100vh
 
 .no-pad
   padding: 0 0

@@ -35,8 +35,8 @@ div
       md-layout
         md-layout(md-flex="33" md-flex-xsmall="100")
           DeckField#deckfield
-        md-layout(md-flex="33" md-flex-xsmall="100")
-          DeckEditor#hseditor
+        md-layout(md-flex="33" md-flex-xsmall="100")#hseditor
+          DeckEditor
         md-layout(md-flex="33" md-flex-xsmall="100")
 
   div.container.section-b.fill-screen#matchups
@@ -45,7 +45,7 @@ div
       h4 Select your deck matchups, choose the number of matches to be simulated and click the red button to add them. There is a total limit of 1000 simulations.
     Matchups
 
-  div.section-c#Submit
+  div.section-c#submit
     md-layout.container.text-center.md-column
       h1.no-margin Submit
       p We will get back to you with an email as soon as the simulations are done! We approximate 1 day processing for 1000 simulations.
@@ -90,5 +90,9 @@ export default {
   display: flex
   flex-flow: column
   height:100%
+
+#hseditor
+  @media(max-width: 600px)
+    height:50vh
 
 </style>
