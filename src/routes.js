@@ -25,7 +25,7 @@ const routes = [
       footer: Footer
     },
     props: {
-      navi:{navMenu: ['About', 'Try', 'Sign Up']}
+      navi: { navMenu: ['About', 'Try', 'Sign Up'] }
     }
   },
   {
@@ -35,11 +35,16 @@ const routes = [
       footer: Footer
     },
     props: {
-      navi: {navMenu: ['Deck Builder', 'Matchups', 'Submit']}
+      navi: { navMenu: ['Deck Builder', 'Matchups', 'Submit'] }
     }
   },
   {
-    path: '*', component: {
+    path: '/404', components: {
+      splash: NotFound
+    }
+  },
+  {
+    path: '*', components: {
       splash: NotFound
     }
   }

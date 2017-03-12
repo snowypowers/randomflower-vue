@@ -4,7 +4,7 @@ div
     div.intro-header
         md-layout.intro-text(md-align="right")
             div.md-display-4(style="color: white") Lost?
-            a.back-btn= '<<'
+            router-link.back-btn(to="/")= '<<'
 </template>
 
 <script>
