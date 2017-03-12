@@ -10,7 +10,7 @@ app.use('/static', express.static('static'));
 //Set view engine
 //app.set('view engine', 'pug');
 
-app.get('/*', function (req, res) {
+app.get('*', function (req, res) {
     res.sendFile(path.join(__dirname + '/index.html'));
 });
 
