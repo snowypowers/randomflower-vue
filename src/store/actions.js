@@ -22,6 +22,11 @@ const actions = {
   },
   removeDeck: ({ state, commit }, deckNum) => {
     commit(types.REMOVE_DECK, deckNum)
+    for (let i=state.matchups.length-1;i>-1;i--) {
+      if (state.matchups[i].deck1 == deckNum || state.matchups[i].deck2 == deckNum ) {
+        commit(types.REMOVE_MATCHUP, i)
+      }
+    }
     if (state.selectedDeck == deckNum) {
       commit(types.SELECT_DECK, -1)
     }
