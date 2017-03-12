@@ -1,6 +1,6 @@
 import * as types from './mutation-types.js'
 import data from '../data/index.js'
-import { toTitleCase, destructureDeck, keySort, basicSort, reverseSort } from '../helpers.js'
+import { toTitleCase, destructureDeck, keySort, basicSort, reverseSort, verifyDeck } from '../helpers.js'
 
 const actions = {
   newDeck: ({ state, commit }, list) => {
@@ -62,6 +62,43 @@ const actions = {
   sortMatchups: ({ commit }, params) => {
     let sortFunc = keySort(params.name, params.type == 'asc' ? basicSort : reverseSort)
     commit(types.SORT_MATCHUP, sortFunc)
+  },
+  submitReq: ({state, commit}, email) => {
+    // Verify email
+    let emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+    if (!emailRegex.test(email)) {
+      commit(types.ERROR_MSG, "Invalid Email")
+      return
+    }
+    // Verify matchups
+    if (state.matchups.length == 0) {
+      commit(types.ERROR_MSG, "No Matchups submitted")
+      return
+    }
+    // Total of 1000 games
+    let totalGames = state.matchups.reduce((acc, m) => acc + m.num, 0)
+    if (totalGames > 1000) {
+      commit(types.ERROR_MSG, "Too many games submitted")
+      return
+    }
+    // Verify Decks
+    let decksNums = state.matchups.reduce((acc, m) => {
+      if (!acc.includes(m.deck1)) acc.push(m.deck1)
+      if (!acc.includes(m.deck2)) acc.push(m.deck2)
+      return acc
+    }, [])
+    let decks = decksNums.map(function(x) {
+      return state.decks.filter((d) => d.id == x)[0]
+    })
+    for (let deck of decks) {
+      let err = verifyDeck(deck.deckList, data[state.locale])
+      if (err) {
+        commit(types.ERROR_MSG,deck.deckName + " - " + err)
+        return
+      }
+    }
+    commit(types.INFO_MSG, "Submit successful!")
+
   }
 }
 
